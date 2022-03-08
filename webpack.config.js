@@ -1,5 +1,6 @@
 const path = require('path')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -24,5 +25,11 @@ module.exports = {
       }
     ]
   },
-  plugins: [new ForkTsCheckerWebpackPlugin()]
+  plugins: [
+    new ForkTsCheckerWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'ing-ui',
+      template: 'public/index.html'
+    })
+  ]
 }
