@@ -1,10 +1,19 @@
 const baseConfig = require('./webpack.config')
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 module.exports = Object.assign({}, baseConfig, {
   mode: 'production',
   entry: {
     ingui: './components/index.tsx'
+  },
+  module: {
+    rules: [
+      // 取消类型检查的禁用，因为打包没有类型声明文件
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/
+      }
+    ]
   },
   // 声明这是外部依赖，不参与打包
   externals: {
@@ -20,6 +29,5 @@ module.exports = Object.assign({}, baseConfig, {
       amd: 'react-dom',
       root: 'ReactDOM'
     }
-  },
-  plugins: [new ForkTsCheckerWebpackPlugin()]
+  }
 })
