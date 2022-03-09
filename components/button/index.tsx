@@ -1,5 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-console.log(React);
-console.log(ReactDOM);
+const Button = () => {
+  return <div>Button</div>;
+};
+
+export default Button;
