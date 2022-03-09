@@ -2,9 +2,6 @@ const path = require('path')
 
 module.exports = {
   mode: 'development',
-  entry: {
-    ingui: './components/index.tsx'
-  },
   output: {
     path: path.resolve(__dirname, 'dist/components'),
     library: 'INGUI',

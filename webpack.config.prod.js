@@ -3,6 +3,9 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 module.exports = Object.assign({}, baseConfig, {
   mode: 'production',
+  entry: {
+    ingui: './components/index.tsx'
+  },
   // 声明这是外部依赖，不参与打包
   externals: {
     react: {

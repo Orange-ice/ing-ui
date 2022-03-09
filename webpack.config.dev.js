@@ -4,6 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = Object.assign({}, baseConfig, {
   mode: 'development',
+  entry: {
+    ingui: './src/index.tsx'
+  },
   plugins: [
     new ForkTsCheckerWebpackPlugin(),
     new HtmlWebpackPlugin({
