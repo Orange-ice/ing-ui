@@ -31,6 +31,10 @@ module.exports = {
           // 将 Sass 编译成 CSS
           'sass-loader'
         ]
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
       }
     ]
   }
