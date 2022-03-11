@@ -1,8 +1,6 @@
 import React from 'react';
 import {joinClass} from '../helper';
 import './index.scss';
-// import './importIcons'
-// import './icons/tiger.svg';
 import './importIcons';
 
 interface IconProps extends React.SVGAttributes<SVGElement> {

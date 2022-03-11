@@ -5,6 +5,10 @@ function importAll(r: __WebpackModuleApi.RequireContext) {
   r.keys().forEach(r);
 }
 
-importAll(require.context('./icons', true, /\.svg$/));
+// 此处的 try catch 为避免测试时报错
+try {
+  importAll(require.context('./icons', true, /\.svg$/));
+} catch (err) {
+}
 
 // npm i @types/webpack-env @types/node -D 来处理ts报错
