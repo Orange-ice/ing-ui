@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button 组件测试 快照测试 1`] = `
+<button
+  className="ice-button primary outline"
+>
+  Test
+</button>
+`;
