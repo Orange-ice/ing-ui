@@ -8,7 +8,8 @@ const App = () => {
       <section>
         <h2>Button 组件</h2>
         <div className="wrapper">
-          <Button/>
+          <Button>Default</Button>
+          <Button effect="primary">Primary</Button>
         </div>
       </section>
 

@@ -9,5 +9,9 @@
 
   section .wrapper {
     margin: 20px;
+
+    > button {
+      &:not(:first-child) {margin-left: 16px;}
+    }
   }
 }
