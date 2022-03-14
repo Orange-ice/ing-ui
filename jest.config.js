@@ -2,7 +2,6 @@
  * For a detailed explanation regarding each configuration property, visit:
  * https://jestjs.io/docs/configuration
  */
-
 module.exports = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
@@ -17,13 +16,13 @@ module.exports = {
   clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
-  collectCoverage: true,
+  collectCoverage: process.env.NODE_ENV === 'test-ci',
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -66,15 +65,15 @@ module.exports = {
   // maxWorkers: "50%",
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  moduleDirectories: ["node_modules"],
+  moduleDirectories: ['node_modules'],
 
   // An array of file extensions your modules use
-  moduleFileExtensions: ["js", "jsx", "ts", "tsx",],
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx',],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/__mocks__/file-mock.js",
-    "\\.(css|less|sass|scss)$": "<rootDir>/test/__mocks__/object-mock.js"
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/test/__mocks__/file-mock.js',
+    '\\.(css|less|sass|scss)$': '<rootDir>/test/__mocks__/object-mock.js'
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -122,7 +121,7 @@ module.exports = {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: ["<rootDir>test/setupTests.js"],
+  setupFilesAfterEnv: ['<rootDir>test/setupTests.js'],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -131,7 +130,7 @@ module.exports = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "jsdom",
+  testEnvironment: 'jsdom',
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -141,7 +140,7 @@ module.exports = {
 
   // The glob patterns Jest uses to detect test files
   testMatch: [
-    "**/__tests__/**/*.unit.[jt]s?(x)",
+    '**/__tests__/**/*.unit.[jt]s?(x)',
   ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
@@ -166,7 +165,7 @@ module.exports = {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    "^.+unit\\.(js|jsx)$": "babel-jest",
+    '^.+unit\\.(js|jsx)$': 'babel-jest',
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
 
@@ -187,4 +186,4 @@ module.exports = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
-};
+}

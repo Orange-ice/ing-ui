@@ -4,9 +4,9 @@
   "description": "React UI 组件库。",
   "main": "index.js",
   "scripts": {
-    "test": "jest --runInBand",
-    "start": "webpack-dev-server --config webpack.config.dev.js",
-    "build": "webpack --config webpack.config.prod.js"
+    "test": "cross-env NODE_ENV=test jest --runInBand",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "@types/react-test-renderer": "^17.0.1",
     "@types/webpack-env": "^1.16.3",
     "babel-jest": "^27.5.1",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "fork-ts-checker-webpack-plugin": "^7.2.1",
     "html-webpack-plugin": "^5.5.0",
