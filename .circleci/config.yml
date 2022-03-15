@@ -1,12 +1,13 @@
-defaults: &defaults
-  docker:
-    - image: cimg/node:16.14.0
-
-
 version: 2.1
+
+executors:
+  node-executor:
+    docker:
+      - image: circleci/node:16.14.0
+
 jobs:
   prepare:
-    <<: *defaults
+    executor: node-executor
     steps:
       - checkout
       - restore_cache:
@@ -22,7 +23,7 @@ jobs:
           paths:
             - node_modules
   build:
-    <<: *defaults
+    executor: node-executor
     steps:
       - checkout
       - attach_workspace:
@@ -36,14 +37,14 @@ jobs:
             - LICENSE
             - README.md
   test:
-    <<: *defaults
+    executor: node-executor
     steps:
       - checkout
       - attach_workspace:
           at: .
       - run: npm run ci
       - store_test_results:
-          path: test-results/jest
+          path: .
 #  publish:
 #    <<: *defaults
 #    steps:
@@ -57,9 +58,9 @@ workflows:
   build_accept_deploy:
     jobs:
       - prepare
-      #      - build:
-      #          requires:
-      #            - test
+      - build:
+          requires:
+            - test
       - test:
           requires:
             - prepare
