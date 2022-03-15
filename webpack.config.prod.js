@@ -7,6 +7,7 @@ module.exports = Object.assign({}, baseConfig, {
   },
   module: {
     rules: [
+      ...baseConfig.module.rules.filter(item => item.loader !== 'ts-loader'),
       // 取消类型检查的禁用，因为打包没有类型声明文件
       {
         test: /\.tsx?$/,
