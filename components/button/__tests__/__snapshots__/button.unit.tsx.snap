@@ -2,7 +2,7 @@
 
 exports[`Button 组件测试 快照测试 1`] = `
 <button
-  className="ice-button primary outline"
+  className="ice-button blue outline default"
 >
   Test
 </button>
