@@ -1,238 +1,67 @@
 @import "components/color.scss";
 
-.ice-button {
-  white-space: nowrap;
-  border: none;
-  cursor: pointer;
-  background: #edf2f7;
-  color: #1a202c;
-  padding: 4px 10px;
-  font-size: 14px;
-  line-height: 24px;
-  border-radius: 4px;
-  transition: all 250ms;
+@mixin size-control($padding,$font-size,$line-height) {
+  padding: 0 $padding;
+  font-size: $font-size;
+  line-height: $line-height;
+}
 
-  &:not([disabled]):hover {
-    background: #e2e8f0
+@mixin color-schema($color,$color-dark, $color-light) {
+  &.solid {
+    @if $color == $gray {
+      color: $gray-font;
+    } @else {
+      color: $common;
+    }
+    background: $color;
+    border: none;
+    box-shadow: 0 0 0 1px $color;
+    font-weight: 500;
   }
 
   &.outline {
-    line-height: 22px;
-    background: #ffffff;
-    border: solid 1px #E2E8F0;
-
-    &:not([disabled]):hover {
-      background: #edf2f7;
-    }
+    border: solid 1px $color-dark;
+    color: $color-dark;
+    background: $common;
   }
 
-  &.ghost {
-    background: #ffffff;
+  &:not([disabled]):hover {
+    &.solid {
+      background: $color-dark;
+      box-shadow: 0 0 0 1px $color-dark;
+    }
 
-    &:not([disabled]):hover {background: #edf2f7;}
+    &.outline {background: $color-light;}
   }
 
   &[disabled] {
     cursor: no-drop;
-    background: #f8fafc;
-    color: #a3a6ab;
-
-    &.outline, &.ghost {background: #ffffff;}
+    opacity: 0.4;
   }
+}
 
-  &.primary {
-    color: #ffffff;
-    background: $primary;
+.ice-button {
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 250ms;
+  border-radius: 0.375em;
 
-    &:not([disabled]):hover {
-      background: $primary-hover;
-    }
+  // size 控制
+  &.default {@include size-control(12px, 14px, 32px);}
 
-    &.outline {
-      background: #fff;
-      border: solid 1px $primary-hover;
-      color: $primary-hover;
+  &.small {@include size-control(8px, 12px, 24px);}
 
-      &:not([disabled]):hover {background: #ebf8ff;}
-    }
+  &.large {@include size-control(16px, 16px, 40px);}
 
-    &.ghost {
-      color: $primary-hover;
-      background: #ffffff;
+  // colorSchema 控制
+  &.gray {@include color-schema($gray, $gray-dark, $gray-light);}
 
-      &:not([disabled]):hover {background: #ebf8ff;}
-    }
-  }
+  &.green {@include color-schema($green, $green-dark, $green-light);}
 
-  &[disabled].primary {
-    background: $primary-disabled;
+  &.red {@include color-schema($red, $red-dark, $red-light);}
 
-    &.outline {
-      background: #ffffff;
-      color: $primary-disabled;
-      border-color: $primary-disabled;
-    }
+  &.orange {@include color-schema($orange, $orange-dark, $orange-light);}
 
-    &.ghost {
-      color: $primary-disabled;
-      background: #ffffff;
-    }
-  }
+  &.blue {@include color-schema($blue, $blue-dark, $blue-light);}
 
-  &.success {
-    color: #ffffff;
-    background: $success;
-
-    &:not([disabled]):hover {
-      background: $success-hover;
-    }
-
-    &.outline {
-      background: #fff;
-      border: solid 1px $success-hover;
-      color: $success-hover;
-
-      &:not([disabled]):hover {background: #f0fff4;}
-    }
-
-    &.ghost {
-      color: $success-hover;
-      background: #ffffff;
-
-      &:not([disabled]):hover {background: #f0fff4;}
-    }
-  }
-
-  &[disabled].success {
-    background: $success-disabled;
-
-    &.outline {
-      background: #ffffff;
-      color: $success-disabled;
-      border-color: $success-disabled;
-    }
-
-    &.ghost {
-      color: $success-disabled;
-      background: #ffffff;
-    }
-  }
-
-
-  &.error {
-    color: #ffffff;
-    background: $error;
-
-    &:not([disabled]):hover {
-      background: $error-hover;
-    }
-
-    &.outline {
-      background: #ffffff;
-      border: solid 1px $error-hover;
-      color: $error-hover;
-
-      &:not([disabled]):hover {background: #fff5f5;}
-    }
-
-    &.ghost {
-      color: $error-hover;
-      background: #ffffff;
-
-      &:not([disabled]):hover {background: #fff5f5;}
-    }
-  }
-
-  &[disabled].error {
-    background: $error-disabled;
-
-    &.outline {
-      background: #ffffff;
-      color: $error-disabled;
-      border-color: $error-disabled;
-    }
-
-    &.ghost {
-      color: $error-disabled;
-      background: #ffffff;
-    }
-  }
-
-  &.warning {
-    color: #ffffff;
-    background: $warning;
-
-    &:not([disabled]):hover {
-      background: $warning-hover;
-    }
-
-    &.outline {
-      background: #ffffff;
-      border: solid 1px $warning-hover;
-      color: $warning-hover;
-
-      &:not([disabled]):hover {background: #fffaf0;}
-    }
-
-    &.ghost {
-      color: $warning-hover;
-      background: #ffffff;
-
-      &:not([disabled]):hover {background: #fffaf0;}
-    }
-  }
-
-  &[disabled].warning {
-    background: $warning-disabled;
-
-    &.outline {
-      background: #ffffff;
-      color: $warning-disabled;
-      border-color: $warning-disabled;
-    }
-
-    &.ghost {
-      color: $warning-disabled;
-      background: #ffffff;
-    }
-  }
-
-  &.info {
-    color: #ffffff;
-    background: $info;
-
-    &:not([disabled]):hover {
-      background: $info-hover;
-    }
-
-    &.outline {
-      background: #ffffff;
-      border: solid 1px $info-hover;
-      color: $info-hover;
-
-      &:not([disabled]):hover {background: lighten($info-hover, 42%);}
-    }
-
-    &.ghost {
-      color: $info-hover;
-      background: #ffffff;
-
-      &:not([disabled]):hover {background: lighten($info-hover, 42%);}
-    }
-  }
-
-  &[disabled].info {
-    background: $info-disabled;
-
-    &.outline {
-      background: #ffffff;
-      color: $info-disabled;
-      border-color: $info-disabled;
-    }
-
-    &.ghost {
-      color: $info-disabled;
-      background: #ffffff;
-    }
-  }
 }

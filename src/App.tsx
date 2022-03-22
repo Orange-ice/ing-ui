@@ -9,7 +9,10 @@ const App = () => {
         <h2>Button 组件</h2>
         <div className="wrapper">
           <Button>Default</Button>
-          <Button effect="primary">Primary</Button>
+          <Button colorScheme="blue">Default</Button>
+          <Button colorScheme="orange">Default</Button>
+          <Button colorScheme="red">Default</Button>
+          <Button colorScheme="green">Default</Button>
         </div>
       </section>
 
