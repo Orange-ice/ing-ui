@@ -1,6 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import './index.scss';
-import {Button, Icon} from '../components';
+import {Button, Icon, Menu} from '../components';
+
+const MenuItem = Menu.Item;
 
 const App = () => {
   return (
@@ -21,6 +23,16 @@ const App = () => {
         <div className="wrapper">
           <Icon name="tiger" style={{width: '36px', height: '36px'}}/>
         </div>
+      </section>
+
+      <section>
+        <h2>菜单</h2>
+        <Menu>
+          <MenuItem>home</MenuItem>
+          <MenuItem>blog</MenuItem>
+          <MenuItem>about</MenuItem>
+          <MenuItem>other</MenuItem>
+        </Menu>
       </section>
     </div>
   );
