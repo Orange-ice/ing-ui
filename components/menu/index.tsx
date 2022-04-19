@@ -32,9 +32,31 @@ const Menu: MenuComponent = (props) => {
     // defaultOpenSubMenus,
   } = props;
   const classnames = joinClass('ice-menu', className, mode === 'horizontal' ? 'menu-horizontal' : 'menu-vertical');
+
+  const renderChildren = () => {
+    const childrenArray = React.Children.toArray(children);
+    return childrenArray.map((child, index) => {
+      if (typeof child === 'string') {
+        console.error('Warning: Menu has a child which is string. string children are not supported');
+        return null;
+      }
+      const childElement = child as React.FunctionComponentElement<MenuItemProps>;
+      index === 0 && console.log(childElement);
+      const {displayName} = childElement.type;
+      if (displayName === 'MenuItem' || displayName === 'SubMenu') {
+        return React.cloneElement(childElement, {
+          index: index.toString(),
+        });
+      } else {
+        console.error('Warning: Menu has a child which is not a MenuItem component');
+        return null;
+      }
+    });
+  };
+
   return (
     <ul className={classnames} style={style}>
-      {children}
+      {renderChildren()}
     </ul>
   );
 };
