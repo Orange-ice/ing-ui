@@ -1,9 +1,11 @@
 import React from 'react';
+import MenuContext from './context';
 import {joinClass} from '../helper';
 import MenuItem, {MenuItemProps} from './menuItem';
+import './index.scss';
 
 // 菜单类型 横向或竖向
-type MenuMode = 'horizontal' | 'vertical';
+export type MenuMode = 'horizontal' | 'vertical';
 
 interface MenuProps {
   /** 默认选中的菜单项 */
@@ -27,11 +29,25 @@ const Menu: MenuComponent = (props) => {
     mode,
     style,
     children,
-    // defaultIndex,
-    // onSelect,
-    // defaultOpenSubMenus,
+    defaultIndex,
+    onSelect,
+    defaultOpenSubMenus,
   } = props;
   const classnames = joinClass('ice-menu', className, mode === 'horizontal' ? 'menu-horizontal' : 'menu-vertical');
+
+  const [activeIndex, setActiveIndex] = React.useState(defaultIndex);
+
+  const menuContext = {
+    index: activeIndex ? activeIndex : '0',
+    onSelect: (index: string) => {
+      setActiveIndex(index);
+      if (onSelect) {
+        onSelect(index);
+      }
+    },
+    mode,
+    defaultOpenSubMenus,
+  };
 
   const renderChildren = () => {
     const childrenArray = React.Children.toArray(children);
@@ -56,7 +72,9 @@ const Menu: MenuComponent = (props) => {
 
   return (
     <ul className={classnames} style={style}>
-      {renderChildren()}
+      <MenuContext.Provider value={menuContext}>
+        {renderChildren()}
+      </MenuContext.Provider>
     </ul>
   );
 };

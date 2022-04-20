@@ -1,0 +1,32 @@
+@import "components/color.scss";
+
+.ice-menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  height: 100%;
+
+  &-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 100%;
+    background-color: #fff;
+    color: #000;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $blue;
+    }
+
+    &.is-active {
+      background-color: $blue;
+      color: #fff;
+    }
+  }
+
+}
